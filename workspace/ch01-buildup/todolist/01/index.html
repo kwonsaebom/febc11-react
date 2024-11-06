@@ -60,15 +60,50 @@
         { no: 3, title: "라면", done: true },
       ];
 
+      const todolistElem = document.querySelector(".todolist");
+      while (todolistElem.firstChild) {
+        todolistElem.firstChild.remove();
+      }
+
+      itemList.forEach((item, index) => {
+        const liElem = getTodoItemElem(item);
+        // todolistElem.innerHTML += liElem;
+        todolistElem.appendChild(getTodoItemElem(item));
+      });
+
       // 한건의 Todo 객체를 받아서 DOM 객체로 만들어 반환
       function getTodoItemElem(item) {
-        return `
-          <li>
-            <span>${item.no}</span>
-            <span>${item.done ? <s>${item.title}</s> : item:title }</span>
-            <button type="button">삭제</button>
-          </li>
-                `;
+        // return `
+        // <li>
+        //   <span>${item.no}</span>
+        //   <span>${item.done ? `<s>${item.title}</s>` : item.title} </span>
+        //   <button type="button">삭제</button>
+        // </li>
+        // `;
+
+        const liElem = document.createElement("li");
+        const noElem = document.createElement("span");
+        const titleElem = document.createElement("span");
+        const deleteElem = document.createElement("button");
+
+        const noTxt = document.createTextNode(item.no);
+        const titleTxt = document.createTextNode(item.title);
+        const deleteTxt = document.createTextNode("삭제");
+
+        noElem.appendChild(noTxt);
+        if (item.done) {
+          const sElem = document.createElement("s");
+          sElem.appendChild(titleTxt);
+          titleElem.appendChild(sElem);
+        } else {
+          titleElem.appendChild(titleTxt);
+        }
+        deleteElem.setAttribute("type", "button");
+        deleteElem.appendChild(deleteTxt);
+        liElem.appendChild(noElem);
+        liElem.appendChild(titleElem);
+        liElem.appendChild(deleteElem);
+        return liElem;
       }
 
       // 할일 추가
