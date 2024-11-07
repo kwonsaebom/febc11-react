@@ -151,6 +151,7 @@
       function deleteItem(idx) {
         itemList.splice(idx, 1);
 
+        // itemList = itemList.splice(itemList.findIndex(no===item.no), 1) // 찾은 인덱스 반환
         const liNode = ulNode.querySelectorAll("li")[idx];
         liNode.remove();
       }
