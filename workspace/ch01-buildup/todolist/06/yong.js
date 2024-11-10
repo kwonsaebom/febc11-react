@@ -28,6 +28,7 @@ const yong = (() => {
         child = document.createTextNode(child);
       } else if (typeof child === "function") {
         child = child();
+      } else {
       }
       elem.appendChild(child);
     }
