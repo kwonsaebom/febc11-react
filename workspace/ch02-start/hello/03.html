@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello - React :()</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/javascript">
+      // <h1>Hello HTML</h1>
+      function App() {
+        // document: 요소 노드만 생성
+        return React.createElement("h1", null, "Hello React"); // React: 요소 노드와 그 노드가 가져야할 속성, 자식 노드 등을 포함할 수 있음 -> 간단함
+      }
+      ReactDOM.createRoot(document.getElementById("root")).render(
+        React.createElement(App, null)
+      );
+    </script>
+  </body>
+</html>
