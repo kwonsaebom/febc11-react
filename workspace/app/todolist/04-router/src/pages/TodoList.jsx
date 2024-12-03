@@ -4,7 +4,7 @@ function TodoList() {
   return (
     <li>
       <span> {item._id}</span>
-    </li>>
+    </li>
   );
 }
 
